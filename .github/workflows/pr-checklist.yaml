@@ -96,10 +96,10 @@ jobs:
               });
 
               const wasAutoClosed = labels.some(l => l.name === 'auto-closed-checklist');
-                if (!wasAutoClosed) {
+              if (!wasAutoClosed) {
                   console.log('PR was manually closed — skipping reopen.');
                   return;
-                }
+              }
 
               await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
@@ -107,7 +107,7 @@ jobs:
                 issue_number: context.payload.pull_request.number,
                 name: 'auto-closed-checklist'
               });
-              
+
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
